@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class Main extends JPanel{
 	//Access classes
 	Player p = new Player ();
+	Enemy e = new Enemy();
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
 	
@@ -15,7 +16,8 @@ public class Main extends JPanel{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		p.drawPlayer(g);
+		p.drawPlayer(g); //access class Players method drawPlayer
+		e.drawEnemy(g);
 	}
 	
 	
