@@ -15,6 +15,7 @@ public class Main extends JPanel implements ActionListener
 	//Access classes
 	Player p = new Player ();
 	Enemy en = new Enemy();
+	Bullet b = new Bullet();
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
 	
@@ -26,6 +27,7 @@ public class Main extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
+		b.moveBullet();
 		repaint();
 	}
 
@@ -34,6 +36,7 @@ public class Main extends JPanel implements ActionListener
 		super.paintComponent(g);
 		p.drawPlayer(g); //access class Players method drawPlayer
 		en.drawEnemy(g);
+		b.drawBullet(g);
 	}
 	
 	public static void displayScreen(){

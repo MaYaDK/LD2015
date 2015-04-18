@@ -3,9 +3,10 @@ import java.awt.Graphics;
 
 
 public class Entity {
-	public int xPos, yPos, width, height;
+	public int xPos, yPos, width, height, health;
 	
 	public Entity(){
+		health = 100;
 		xPos = 100;
 		yPos = 100;
 		width = 30; 
