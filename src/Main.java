@@ -3,23 +3,38 @@ import javax.swing.JFrame;
 import java.awt.Graphics;
 //Access draw content
 import javax.swing.JPanel;
+//Access action/movement
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-
-public class Main extends JPanel{
+public class Main extends JPanel implements ActionListener
+{
+	//Create timer for action/movement
+	Timer tm = new Timer(5, this);
 	//Access classes
 	Player p = new Player ();
-	Enemy e = new Enemy();
+	Enemy en = new Enemy();
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
 	
+	//Class constructor
+	public Main(){
+		tm.start(); //start timer	
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		en.moveEnemy();
+		repaint();
+	}
 
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		p.drawPlayer(g); //access class Players method drawPlayer
-		e.drawEnemy(g);
+		en.drawEnemy(g);
 	}
-	
 	
 	public static void displayScreen(){
 		Main t = new Main();
