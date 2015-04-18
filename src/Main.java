@@ -1,12 +1,10 @@
 import javax.swing.JFrame;
-
 //Access graphics
 import java.awt.Graphics;
 //Access draw content
 import javax.swing.JPanel;
 //Access action/movement
 import javax.swing.Timer;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,7 +21,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
-	
+	//Booleans controlled by key pressed.
 	boolean isShooting = false;
 	boolean isGameStarted = false;
 	
@@ -51,13 +49,21 @@ public class Main extends JPanel implements ActionListener, KeyListener
 			//respawn bullet at weapons position
 			p.w.b.xPos = p.w.xPos;
 		}
+		if(en.isEnemyThrough == true){
+			p.health-=20;
+		}
 	}
 
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		p.drawPlayer(g); //access class Players method drawPlayer
-		en.drawEnemy(g);
+		if(isGameStarted == true){
+			p.drawPlayer(g); //access class Players method drawPlayer
+			en.drawEnemy(g);
+		}
+		if(isGameStarted == false){
+			
+		}
 	}
 	public void keyPressed(KeyEvent e)
 	{

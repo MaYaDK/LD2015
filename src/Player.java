@@ -13,7 +13,7 @@ public class Player extends Entity //Inherit Entity class
 	public void drawPlayer(Graphics g){
 		w.drawWeapon(g);
 		drawEntity(g);
-		
+		g.drawString("Health: "+health, 100, 300);
 	}
 
 	public static void main(String[] args) {
