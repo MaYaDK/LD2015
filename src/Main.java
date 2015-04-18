@@ -15,7 +15,7 @@ public class Main extends JPanel implements ActionListener
 	//Access classes
 	Player p = new Player ();
 	Enemy en = new Enemy();
-	Bullet b = new Bullet();
+	
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
 	
@@ -27,12 +27,12 @@ public class Main extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
-		b.moveBullet();
+		p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
 		collision(); //check collison bullet/enemy
 		repaint();
 	}
 	public void collision(){
-		if(b.xPos == en.xPos){
+		if(p.w.b.xPos == en.xPos){
 			en.increaseSize();
 			System.out.println("Collision");
 		}
@@ -43,7 +43,7 @@ public class Main extends JPanel implements ActionListener
 		super.paintComponent(g);
 		p.drawPlayer(g); //access class Players method drawPlayer
 		en.drawEnemy(g);
-		b.drawBullet(g);
+		p.w.b.drawBullet(g);
 	}
 	
 	public static void displayScreen(){

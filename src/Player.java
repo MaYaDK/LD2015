@@ -3,6 +3,7 @@ import java.awt.Graphics;
 
 public class Player extends Entity //Inherit Entity class
 { 
+	Weapon w = new Weapon();
 	//Class constructor
 	public Player(){
 		xPos = 20;
@@ -10,6 +11,7 @@ public class Player extends Entity //Inherit Entity class
 	}
 	
 	public void drawPlayer(Graphics g){
+		w.drawWeapon(g);
 		drawEntity(g);
 		
 	}
