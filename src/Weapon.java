@@ -14,6 +14,7 @@ public class Weapon
 			
 	public void drawWeapon(Graphics g){
 		g.fillRect(xPos,yPos,15,5); //Temporary
+		b.drawBullet(g);
 	}
 
 	public static void main(String[] args) {

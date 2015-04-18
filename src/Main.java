@@ -43,7 +43,6 @@ public class Main extends JPanel implements ActionListener
 		super.paintComponent(g);
 		p.drawPlayer(g); //access class Players method drawPlayer
 		en.drawEnemy(g);
-		p.w.b.drawBullet(g);
 	}
 	
 	public static void displayScreen(){
