@@ -1,15 +1,22 @@
 import javax.swing.JFrame;
+
+import java.awt.Color;
 //Access graphics
 import java.awt.Graphics;
+
 //Access draw content
 import javax.swing.JPanel;
 //Access action/movement
 import javax.swing.Timer;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 //Access Keyboard
 import java.awt.event.KeyListener;
+
+//Access text editing.
+import java.awt.Font; //Getting font input
 
 public class Main extends JPanel implements ActionListener, KeyListener
 {
@@ -57,12 +64,21 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		Font font = new Font("Serif", Font.PLAIN, 30); //Create new font.
+		g.setFont(font); //Passing the created font.
 		if(isGameStarted == true){
 			p.drawPlayer(g); //access class Players method drawPlayer
 			en.drawEnemy(g);
 		}
 		if(isGameStarted == false){
-			
+			g.setColor(Color.ORANGE);
+			g.fillRect(0,0,1300,100);
+			g.setColor(Color.darkGray);
+			g.drawString("<TITLE>", 100,50);
+			g.fillRect(0,100,1300,400);
+			g.setColor(Color.ORANGE);
+			g.drawString("Game description", 100,200);
+			g.drawString("Press ENTER to start!", 100,300);
 		}
 	}
 	public void keyPressed(KeyEvent e)
