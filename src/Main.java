@@ -28,7 +28,14 @@ public class Main extends JPanel implements ActionListener
 	{
 		en.moveEnemy();
 		b.moveBullet();
+		collision(); //check collison bullet/enemy
 		repaint();
+	}
+	public void collision(){
+		if(b.xPos == en.xPos){
+			en.increaseSize();
+			System.out.println("Collision");
+		}
 	}
 
 	public void paintComponent(Graphics g)

@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 
 public class Entity {
-	public int xPos, yPos, width, height, health;
+	public int xPos, yPos, width, height, widthHead, heightHead, health;
 	
 	public Entity(){
 		health = 100;
@@ -11,12 +11,14 @@ public class Entity {
 		yPos = 100;
 		width = 30; 
 		height = 30;
+		widthHead = 30; 
+		heightHead = 30;
 	}
 	
 	public void drawEntity(Graphics g){
 		g.setColor(Color.BLACK);
 		//Head
-		g.fillOval(xPos-15, yPos-25, width, height);
+		g.fillOval(xPos-15, yPos-25, widthHead, heightHead);
 		//Arms
 		g.drawLine(xPos, yPos, xPos+20, yPos+20);
 		g.drawLine(xPos, yPos, xPos-20, yPos+20);
