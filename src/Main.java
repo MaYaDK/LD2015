@@ -1,14 +1,19 @@
 import javax.swing.JFrame;
+
 //Access graphics
 import java.awt.Graphics;
 //Access draw content
 import javax.swing.JPanel;
 //Access action/movement
 import javax.swing.Timer;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+//Access Keyboard
+import java.awt.event.KeyListener;
 
-public class Main extends JPanel implements ActionListener
+public class Main extends JPanel implements ActionListener, KeyListener
 {
 	//Create timer for action/movement
 	Timer tm = new Timer(5, this);
@@ -19,22 +24,32 @@ public class Main extends JPanel implements ActionListener
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
 	
+	boolean isShooting = false;
+	boolean isGameStarted = false;
+	
 	//Class constructor
 	public Main(){
 		tm.start(); //start timer	
+		addKeyListener(this); 
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
 	}
 	
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
-		p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
+		//if(isShooting == true){
+			p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
+		//}
 		collision(); //check collison bullet/enemy
 		repaint();
+		
 	}
 	public void collision(){
 		if(p.w.b.xPos == en.xPos){
 			en.increaseSize();
-			System.out.println("Collision");
+			//respawn bullet at weapons position
+			p.w.b.xPos = p.w.xPos;
 		}
 	}
 
@@ -44,6 +59,18 @@ public class Main extends JPanel implements ActionListener
 		p.drawPlayer(g); //access class Players method drawPlayer
 		en.drawEnemy(g);
 	}
+	public void keyPressed(KeyEvent e)
+	{
+		int c = e.getKeyCode();
+		if(c == KeyEvent.VK_SPACE){ //Moving bullet right
+			isShooting = true;
+		}
+		if(c == KeyEvent.VK_ENTER){ //Moving player right
+			isGameStarted = true;
+		}
+	}
+	public void keyTyped(KeyEvent e){}
+	public void keyReleased(KeyEvent e){}
 	
 	public static void displayScreen(){
 		Main t = new Main();
