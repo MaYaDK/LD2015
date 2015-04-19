@@ -25,12 +25,16 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	//Access classes
 	Player p = new Player ();
 	Enemy en = new Enemy();
+	ScreenContainer s = new ScreenContainer();
 	
 	//Screen variables
 	public static int screenHeight = 1220, screenWidth = 440;
+	
 	//Booleans controlled by key pressed.
 	boolean isShooting = false;
 	boolean isGameStarted = false;
+	boolean isGameWon = false;
+	boolean isGameLost = false;
 	
 	//Class constructor
 	public Main(){
@@ -43,7 +47,6 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
-		
 		if(isShooting == true){
 			p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
 		}
@@ -56,10 +59,17 @@ public class Main extends JPanel implements ActionListener, KeyListener
 			en.increaseSize();
 			//respawn bullet at weapons position
 			p.w.b.xPos = p.w.xPos;
+			//Count killed people
 			isShooting = false;
 		}
 		if(en.isEnemyThrough == true){
 			p.health-=20;
+		}
+		if(p.health<=0){
+			isGameLost = true;
+		}
+		if(en.numberOfKilled == 3){
+			isGameWon = true;
 		}
 	}
 
@@ -73,14 +83,13 @@ public class Main extends JPanel implements ActionListener, KeyListener
 			en.drawEnemy(g);
 		}
 		if(isGameStarted == false){
-			g.setColor(Color.ORANGE);
-			g.fillRect(0,0,1300,100);
-			g.setColor(Color.darkGray);
-			g.drawString("<TITLE>", 100,50);
-			g.fillRect(0,100,1300,400);
-			g.setColor(Color.ORANGE);
-			g.drawString("Game description", 100,200);
-			g.drawString("Press ENTER to start!", 100,300);
+			s.startScreen(g);
+		}
+		if(isGameLost == true){
+			s.lostGame(g);
+		}
+		if(isGameWon == true){
+			s.wonGame(g);
 		}
 	}
 	public void keyPressed(KeyEvent e)

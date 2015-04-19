@@ -3,6 +3,7 @@ import java.awt.Graphics;
 public class Enemy extends Entity //Inherit Entity class
 {
 	public int speed = 3;
+	public int numberOfKilled = 0;
 	boolean isDead = false;
 	boolean isEnemyThrough = false;
 	
@@ -32,7 +33,7 @@ public class Enemy extends Entity //Inherit Entity class
 		if(isDead == false){
 			xPos = xPos - speed;
 			//if enemy reached end of screen/player
-			if(xPos<=0){
+			if(xPos<=30){
 				isEnemyThrough = true;
 				
 			}
@@ -45,6 +46,7 @@ public class Enemy extends Entity //Inherit Entity class
 		health = health -25;
 		if(health<=0){
 			isDead = true;
+			numberOfKilled +=1;
 		}
 	}
 
