@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 
-public class Enemy extends Entity //Inherit Entity class
+public class EnemyBottom extends Entity //Inherit Entity class
 {
 	public int speed = 3;
 	public int numberOfKilled = 0;
@@ -8,9 +8,9 @@ public class Enemy extends Entity //Inherit Entity class
 	boolean isEnemyThrough = false;
 	
 	//Class constructor
-	public Enemy(){
-		xPos = 1200;
-		yPos = 330;
+	public EnemyBottom(){
+		xPos = 1700;
+		yPos = 530;
 		health = 100;
 	}
 	
@@ -19,7 +19,7 @@ public class Enemy extends Entity //Inherit Entity class
 		if(isDead == true || isEnemyThrough == true){
 			//reset enemy
 			xPos = 1200;
-			yPos = 330;
+			yPos = 530;
 			health = 100;
 			width = 30;
 			height = 30;

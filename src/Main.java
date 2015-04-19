@@ -24,7 +24,11 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	Timer tm = new Timer(5, this);
 	//Access classes
 	Player p = new Player ();
+	
 	Enemy en = new Enemy();
+	EnemyTop enT = new EnemyTop();
+	EnemyBottom enB = new EnemyBottom();
+	
 	ScreenContainer s = new ScreenContainer();
 	
 	//Screen variables
@@ -35,9 +39,12 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	boolean isGameStarted = false;
 	boolean isGameWon = false;
 	boolean isGameLost = false;
+	public int numberOfEnemies;
+
 	
 	//Class constructor
 	public Main(){
+		numberOfEnemies = 1;
 		tm.start(); //start timer	
 		addKeyListener(this); 
 		setFocusable(true);
@@ -47,22 +54,39 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
+		enT.moveEnemy();
+		enB.moveEnemy();
+		collision(); //check collison bullet/enemy
 		if(isShooting == true){
 			p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
 		}
-		collision(); //check collison bullet/enemy
 		repaint();
 		
 	}
+	
 	public void collision(){
-		if(p.w.b.xPos >= en.xPos){
+		if(p.w.b.xPos >= enT.xPos && p.w.b.yPos > 0 && p.w.b.yPos < 200){
+			enT.increaseSize();
+			//respawn bullet at weapons position
+			p.w.b.xPos = p.xPos;
+			//Count killed people
+			isShooting = false;
+		}
+		if(p.w.b.xPos >= en.xPos && p.w.b.yPos > 200 && p.w.b.yPos < 400){
 			en.increaseSize();
 			//respawn bullet at weapons position
 			p.w.b.xPos = p.xPos;
 			//Count killed people
 			isShooting = false;
 		}
-		if(en.isEnemyThrough == true){
+		if(p.w.b.xPos >= enB.xPos && p.w.b.yPos >400){
+			enB.increaseSize();
+			//respawn bullet at weapons position
+			p.w.b.xPos = p.xPos;
+			//Count killed people
+			isShooting = false;
+		}
+		if(enT.isEnemyThrough||en.isEnemyThrough == true || enT.isEnemyThrough){
 			p.health-=20;
 		}
 		if(p.health<=0){
@@ -78,9 +102,14 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		super.paintComponent(g);
 		Font font = new Font("Serif", Font.PLAIN, 30); //Create new font.
 		g.setFont(font); //Passing the created font.
+		
 		if(isGameStarted == true){
-			p.drawPlayer(g); //access class Players method drawPlayer
 			en.drawEnemy(g);
+			enT.drawEnemy(g);
+			enB.drawEnemy(g);
+				
+			p.drawPlayer(g); //access class Players method drawPlayer
+			
 			for(int i = 0; i<=screenHeight; i+=200){
 				g.drawLine(0,i,screenWidth, i);
 			}
@@ -100,6 +129,10 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		int c = e.getKeyCode();
 		if(c == KeyEvent.VK_SPACE){ //Moving bullet right
 			isShooting = true;
+			
+		}
+		if(c == KeyEvent.VK_E){ //Moving bullet right
+			//en[numberOfEnemies] = new Enemy();
 		}
 		if(c == KeyEvent.VK_ENTER){ //Moving player right
 			isGameStarted = true;
@@ -142,6 +175,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		jf.add(t);
 	}
 	public static void main(String[] args) {
+		
 		displayScreen();
 	}
 }

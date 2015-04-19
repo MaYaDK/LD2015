@@ -15,7 +15,7 @@ public class Entity {
 		heightHead = 30;
 	}
 	
-	public void drawEntity(Graphics g){
+	public void drawEntity(Graphics g, int xPos, int yPos){
 		g.setColor(Color.BLACK);
 		//Head
 		g.fillOval(xPos-15, yPos-25, widthHead, heightHead);
@@ -30,8 +30,6 @@ public class Entity {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
-
 }
