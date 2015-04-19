@@ -7,8 +7,6 @@ public class Bullet
 
 	//Class constructor
 	public Bullet(){
-		xPos = 20;
-		yPos = 220;
 	}
 		
 	public void drawBullet(Graphics g){

@@ -8,6 +8,10 @@ public class Player extends Entity //Inherit Entity class
 	public Player(){
 		xPos = 20;
 		yPos = 200;
+		w.xPos = xPos+10;
+		w.yPos = yPos+20;
+		w.b.xPos = xPos+10;
+		w.b.yPos = yPos+20;
 	}
 	
 	public void drawPlayer(Graphics g){

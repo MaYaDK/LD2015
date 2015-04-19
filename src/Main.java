@@ -58,7 +58,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		if(p.w.b.xPos >= en.xPos){
 			en.increaseSize();
 			//respawn bullet at weapons position
-			p.w.b.xPos = p.w.xPos;
+			p.w.b.xPos = p.xPos;
 			//Count killed people
 			isShooting = false;
 		}

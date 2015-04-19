@@ -8,8 +8,6 @@ public class Weapon
 	
 	//Class constructor
 	public Weapon(){
-		xPos = 30;
-		yPos = 220;
 	}
 			
 	public void drawWeapon(Graphics g){
