@@ -108,18 +108,24 @@ public class Main extends JPanel implements ActionListener, KeyListener
 			if(p.yPos>200){
 				p.yPos -=200;
 				p.w.yPos -=200;
-				//if(isShooting == false){
-					p.w.b.yPos -=200;
-				//}
+				if(isShooting == false){
+					p.w.b.yPos = p.w.yPos;
+				}
+				if(isShooting == true){
+					p.w.b.yPos = p.w.b.yPos;
+				}
 			}
 		}
 		if(c == KeyEvent.VK_DOWN){ //Moving player right
 			if(p.yPos<400){
 				p.yPos +=200;
 				p.w.yPos +=200;
-				//if(isShooting == false){
-					p.w.b.yPos +=200;
-				//}
+				if(isShooting == false){
+					p.w.b.yPos = p.w.yPos;
+				}
+				if(isShooting == true){
+					p.w.b.yPos = p.w.b.yPos;
+				}
 			}
 		}
 	}
