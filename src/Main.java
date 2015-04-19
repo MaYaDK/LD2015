@@ -86,7 +86,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 			//Count killed people
 			isShooting = false;
 		}
-		if(enT.isEnemyThrough||en.isEnemyThrough == true || enT.isEnemyThrough){
+		if(enT.isEnemyThrough||en.isEnemyThrough == true || enB.isEnemyThrough){
 			p.health-=20;
 		}
 		if(p.health<=0){
