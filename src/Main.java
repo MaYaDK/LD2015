@@ -91,7 +91,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		if(p.health<=0){
 			isGameLost = true;
 		}
-		if(en.numberOfKilled == 3){
+		if(enT.numberOfKilled + en.numberOfKilled + enB.numberOfKilled == 5){
 			isGameWon = true;
 		}
 	}
