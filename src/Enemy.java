@@ -24,6 +24,7 @@ public class Enemy extends Entity //Inherit Entity class
 			width = 30;
 			height = 30;
 			speed = 3;
+			strokeSize = 1;
 			isDead = false;
 			isEnemyThrough = false;
 		}
@@ -39,10 +40,11 @@ public class Enemy extends Entity //Inherit Entity class
 		}
 	}
 	public void increaseSize(){
-		width = width+10; 
+		width = width+20; 
 		height = height+10;
 		speed = speed -1;
 		health = health -25;
+		strokeSize = strokeSize+5;
 		if(health<=0){
 			isDead = true;
 			numberOfKilled +=1;
