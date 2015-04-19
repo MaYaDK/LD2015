@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class Bullet 
 {
-	public int xPos, yPos, speed = 1;
+	public int xPos, yPos, speed = 3;
 
 	//Class constructor
 	public Bullet(){

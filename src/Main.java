@@ -43,18 +43,20 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	public void actionPerformed(ActionEvent e)
 	{
 		en.moveEnemy();
-		//if(isShooting == true){
+		
+		if(isShooting == true){
 			p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
-		//}
+		}
 		collision(); //check collison bullet/enemy
 		repaint();
 		
 	}
 	public void collision(){
-		if(p.w.b.xPos == en.xPos){
+		if(p.w.b.xPos >= en.xPos){
 			en.increaseSize();
 			//respawn bullet at weapons position
 			p.w.b.xPos = p.w.xPos;
+			isShooting = false;
 		}
 		if(en.isEnemyThrough == true){
 			p.health-=20;

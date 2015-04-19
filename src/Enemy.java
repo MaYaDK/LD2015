@@ -15,10 +15,7 @@ public class Enemy extends Entity //Inherit Entity class
 	}
 	
 	public void drawEnemy(Graphics g){
-		
-		if(isDead == false){
-			drawEntity(g);
-		}
+		drawEntity(g);
 		if(isDead == true || isEnemyThrough == true){
 			//reset enemy
 			xPos = 1200;
@@ -27,7 +24,6 @@ public class Enemy extends Entity //Inherit Entity class
 			width = 30;
 			height = 30;
 			speed = 3;
-			drawEntity(g);
 			isDead = false;
 			isEnemyThrough = false;
 		}
@@ -46,7 +42,7 @@ public class Enemy extends Entity //Inherit Entity class
 		width = width+10; 
 		height = height+10;
 		speed = speed -1;
-		health = health -50;
+		health = health -25;
 		if(health<=0){
 			isDead = true;
 		}
