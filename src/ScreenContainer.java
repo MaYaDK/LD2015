@@ -20,7 +20,7 @@ public class ScreenContainer {
 		g.drawString("Todays most common disease is obesity, so why not use this as a weapon?", 100,250);
 		g.drawString("Shoot your enemies with sugar, so they get more and more fat and slow until "
 				+ "they can't move and die..", 100,300);
-		g.drawString("Shoot with SPACE key, move up with UP and move down with DOWN.", 100,350);
+		g.drawString("Shoot with SPACE, move upwards with UP and move downwards with DOWN.", 100,350);
 		g.setFont(font); //Passing the created font.
 		g.drawString("Press ENTER to start!", 100,500);
 		g.setFont(font2); //Passing the created font.
