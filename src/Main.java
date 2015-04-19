@@ -28,7 +28,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	ScreenContainer s = new ScreenContainer();
 	
 	//Screen variables
-	public static int screenHeight = 1220, screenWidth = 440;
+	public static int screenWidth = 1220, screenHeight = 650;
 	
 	//Booleans controlled by key pressed.
 	boolean isShooting = false;
@@ -81,6 +81,9 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		if(isGameStarted == true){
 			p.drawPlayer(g); //access class Players method drawPlayer
 			en.drawEnemy(g);
+			for(int i = 0; i<=screenHeight; i+=200){
+				g.drawLine(0,i,screenWidth, i);
+			}
 		}
 		if(isGameStarted == false){
 			s.startScreen(g);
@@ -101,6 +104,24 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		if(c == KeyEvent.VK_ENTER){ //Moving player right
 			isGameStarted = true;
 		}
+		if(c == KeyEvent.VK_UP){ //Moving player right
+			if(p.yPos>200){
+				p.yPos -=200;
+				p.w.yPos -=200;
+				//if(isShooting == false){
+					p.w.b.yPos -=200;
+				//}
+			}
+		}
+		if(c == KeyEvent.VK_DOWN){ //Moving player right
+			if(p.yPos<400){
+				p.yPos +=200;
+				p.w.yPos +=200;
+				//if(isShooting == false){
+					p.w.b.yPos +=200;
+				//}
+			}
+		}
 	}
 	public void keyTyped(KeyEvent e){}
 	public void keyReleased(KeyEvent e){}
@@ -109,7 +130,7 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		Main t = new Main();
 		JFrame jf = new JFrame();
 		jf.setTitle("An Unconventional Weapon"); //Displaying the title on the frame
-		jf.setSize(screenHeight, screenWidth); //Setting size of frame (x,y);
+		jf.setSize(screenWidth, screenHeight); //Setting size of frame (x,y);
 		jf.setVisible(true); //Display the frame.
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		jf.add(t);

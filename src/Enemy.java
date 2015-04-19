@@ -10,7 +10,7 @@ public class Enemy extends Entity //Inherit Entity class
 	//Class constructor
 	public Enemy(){
 		xPos = 1200;
-		yPos = 200;
+		yPos = 330;
 		health = 100;
 		
 	}
@@ -20,7 +20,7 @@ public class Enemy extends Entity //Inherit Entity class
 		if(isDead == true || isEnemyThrough == true){
 			//reset enemy
 			xPos = 1200;
-			yPos = 200;
+			yPos = 330;
 			health = 100;
 			width = 30;
 			height = 30;

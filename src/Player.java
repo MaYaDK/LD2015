@@ -7,7 +7,7 @@ public class Player extends Entity //Inherit Entity class
 	//Class constructor
 	public Player(){
 		xPos = 20;
-		yPos = 200;
+		yPos = 330;
 		w.xPos = xPos+10;
 		w.yPos = yPos+20;
 		w.b.xPos = xPos+10;
