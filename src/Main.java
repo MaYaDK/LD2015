@@ -24,11 +24,9 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	Timer tm = new Timer(5, this);
 	//Access classes
 	Player p = new Player ();
-	
 	Enemy en = new Enemy();
 	EnemyTop enT = new EnemyTop();
 	EnemyBottom enB = new EnemyBottom();
-	
 	ScreenContainer s = new ScreenContainer();
 	
 	//Screen variables
@@ -53,15 +51,16 @@ public class Main extends JPanel implements ActionListener, KeyListener
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		en.moveEnemy();
-		enT.moveEnemy();
-		enB.moveEnemy();
-		collision(); //check collison bullet/enemy
+		if(isGameStarted == true){
+			en.moveEnemy();
+			enT.moveEnemy();
+			enB.moveEnemy();
+			collision(); //check collison bullet/enemy
 		if(isShooting == true){
 			p.w.b.moveBullet(); //Access Player, Weapon and Bullet method
 		}
 		repaint();
-		
+		}
 	}
 	
 	public void collision(){
@@ -104,15 +103,36 @@ public class Main extends JPanel implements ActionListener, KeyListener
 		g.setFont(font); //Passing the created font.
 		
 		if(isGameStarted == true){
+			for(int i = 0; i<=screenHeight; i+=200){
+				g.drawLine(0,i,screenWidth, i);
+				g.drawRect(0,i,200,200);
+			}
+			
+			//Background
+			for(int i = 0; i<=screenWidth; i+=200){
+				g.setColor(Color.DARK_GRAY);
+				g.fillRect(i,0,200,200);
+				
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(i+10,10,180,180);
+			}
+			for(int i = 0; i<=screenWidth; i+=200){
+				g.setColor(Color.DARK_GRAY);
+				g.fillRect(i,200,200,200);
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(i+10,210,180,180);
+			}
+			for(int i = 0; i<=screenWidth; i+=200){
+				g.setColor(Color.DARK_GRAY);
+				g.fillRect(i,400,200,200);
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(i+10,410,180,180);
+			}
+			//Objects
 			en.drawEnemy(g);
 			enT.drawEnemy(g);
 			enB.drawEnemy(g);
-				
 			p.drawPlayer(g); //access class Players method drawPlayer
-			
-			for(int i = 0; i<=screenHeight; i+=200){
-				g.drawLine(0,i,screenWidth, i);
-			}
 		}
 		if(isGameStarted == false){
 			s.startScreen(g);
